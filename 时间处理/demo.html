@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="./moment.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		var a=moment('2016-01-01');//moment 对象中的值是可变的。
+		var b=a.add(1,'week');
+		console.log(b.format());
+		var b=a.clone().add(1,'week');
+		//需要在操作之前进行clone操作来保持
+		//moment 在添加小数时尽量通过四舍五入的方式来添加。
+		var now=moment();
+		//获取当前的日期和时间，创建moment()对象；
+		console.log(now);
+		var now2= moment("12-25-1995", "MM-DD-yy");
+		console.log(now2);
+		var now3=moment(Number[]);
+		//[year, month, day, hour, minute, second, millisecond] 可以通过传入数组的形式来创建时间，数组所对应如上所示。
+		//demo
+		var demo=moment([2010, 1, 14, 15, 25, 50, 125]);//February 14th, 3:25:50.125 PM
+
+		
+	</script>
+</body>
+</html>
