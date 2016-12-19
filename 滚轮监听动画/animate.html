@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我就是天才</title>
+	<style type="text/css">
+		html {
+  height: 100%;
+  overflow: hidden;
+  margin: 0 0;
+}
+
+body {
+  height: 100%;
+  overflow: auto;
+  margin: 0 0;
+  font-family: 'Rubik', sans-serif;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar { display: none; }
+
+p {
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+
+a { text-decoration: none; }
+
+#wrapper {
+  height: 400vh;
+  display: flex;
+  justify-content: center;
+}
+
+.scroll-overlay {
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  position: relative;
+}
+
+#letters {
+  position: fixed;
+  text-align: center;
+  top: 280px;
+  width: 100%;
+}
+
+#letters div {
+  display: inline-block;
+  font-size: 50px;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-family: 'Rubik', sans-serif;
+  transition: color 0.1s ease-in-out;
+}
+
+#letters .o {
+  transition: none;
+}
+
+#letters .line {
+  border-bottom-width: 8px;
+  border-bottom-style: solid;
+  border-color: #ff7474;
+  width: 0.01%;
+
+  opacity: 0;
+}
+
+.links {
+  height: calc(100vh - 420px);
+  text-align: center;
+}
+
+.links .quickstart {
+  font-family: 'Inconsolata', monospace;
+  background-color: #080808;
+  color: white;
+  padding: 20px;
+  display: inline-block;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.links button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: #aaa;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.links button:hover {
+  background-color: #95cc21;
+}
+
+.scroll-down {
+  width: 100%;
+  position: fixed;
+  top: 420px;
+  text-align: center;
+}
+
+.scroll-down p {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.down-arrow {
+  width: 30px;
+  height: 30px;
+
+  display: inline-block;
+  margin-top: -15px;
+  opacity: 0.3;
+
+  transform: rotateZ(45deg);
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+
+
+@media (max-width:660px) {
+  #letters div {
+    font-size: 38px;
+  }
+}
+
+@media (max-width:500px) {
+  #letters { top: 180px; }
+
+  #letters div { font-size: 20px; }
+  #letters .line { display: none; }
+  #letters .description { padding: 20px; }
+
+  .links { height: calc(100vh - 300px); }
+
+  .links .quickstart {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .scroll-down { top: 300px; }
+}
+
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="letters">
+			<div class="w">我</div>
+			<div class="s">是</div>
+			<div class="t">天</div>
+			<div class="c">才</div>
+			<div class="n">你</div>
+			<div class="q">去</div>
+			<div class="k">看</div>
+			<div class="y">一</div>
+			<div class="x">下</div>
+			<br>
+			<div class="line"></div>
+			<br>
+			<div class="description">这个东西就是滚轮变化的时候动画进行该变</div>
+		</div>
+		<div class="scroll-overlay"></div>
+	</div>
+	<div class="links">
+		<div class="test">
+			这就是一个动画测试
+		</div>
+	</div>
+	<script type="text/javascript" src="choreographer.min.js"></script>
+	<script type="text/javascript">
+		var wrapperNode = document.getElementById('wrapper');
+		var scrollDownNode = document.querySelector('.scroll-down');
+		var linkNodes = document.querySelector('.links');
+
+		var vh = window.innerHeight;
+		var fin = wrapperNode.clientHeight - vh + linkNodes.clientHeight;
+		function calculateAnimations() {
+			return[
+				{ range: [0,100],   selector: '.w', type: 'scale', style: 'transform:translateY', from: 0, to: 25, unit: 'px' },
+			    { range: [fin * 0.5, fin],  selector: '.w', type: 'scale', style: 'transform:translateY', from: 25, to: 0, unit: 'px' },
+			    { range: [fin * 0.4, fin],  selector: '.w', type: 'change', style: 'color', to: '#ffb515' },
+			    { range: [0,420],   selector: '.s', type: 'scale', style: 'transform:scaleX', from: 1, to: 0.5 },
+			    { range: [-1, fin * 0.5],   selector: '.s', type: 'scale', style: 'transform:scaleY', from: 1, to: 0.5 },
+			    { range: [fin * 0.5, fin],  selector: '.s', type: 'scale', style: 'transform:scaleX', from: 0.5, to: 1 },
+			    { range: [fin * 0.5, fin],  selector: '.s', type: 'scale', style: 'transform:scaleY', from: 0.5, to: 1 },
+			    { range: [fin * 0.3, fin],  selector: '.s', type: 'change', style: 'color', to: '#1fd1ec' },
+			    { range: [fin * 0.1, fin],  selector: '.t', type: 'randomizeColor' },
+			    { range: [-1, fin * 0.5],   selector: '.c', type: 'scale', style: 'transform:rotateX', from: 0, to: 90, unit: 'deg' },
+			    { range: [fin * 0.5, fin],  selector: '.c', type: 'scale', style: 'transform:rotateX', from: 90, to: 0, unit: 'deg' },
+			    { range: [fin * 0.3, fin],  selector: '.c', type: 'change', style: 'color', to: '#8382f9' },
+			    { range: [fin * 0.3, fin],  selector: '.n', type: 'change', style: 'color', to: '#ff1b9b' },
+			    { range: [-1, fin * 0.5],   selectors: ['.q', '.k'], type: 'scale', style: 'transform:rotateZ', from: 0, to: 180, unit: 'deg' },
+			    { range: [fin * 0.5, fin],  selectors: ['.q', '.k'], type: 'scale', style: 'transform:rotateZ', from: 180, to: 360, unit: 'deg' },
+			    { range: [fin * 0.4, fin],  selectors: ['.q', '.k'], type: 'change', style: 'color', to: '#ff8b1c' },
+			    { range: [-1, fin * 0.5],   selectors: ['.y', '.x'], type: 'scale', style: 'transform:rotateZ', from: 0, to: -180, unit: 'deg' },
+			    { range: [fin * 0.5, fin],  selectors: ['.y', '.x'], type: 'scale', style: 'transform:rotateZ', from: -180, to: -360, unit: 'deg' },
+			    { range: [fin * 0.4, fin],  selectors: ['.y', '.x'], type: 'change', style: 'color', to: '#c05bdb' },
+			    { range: [-1, fin],         selector: '.line', type: 'scale', style: 'width', from: 0.01, to: 50, unit: '%' },
+    			{ range: [-1, fin],         selector: '.line', type: 'scale', style: 'opacity', from: 0, to: 1 },
+
+			]
+		}
+		var choreographer = new Choreographer({
+			  animations: calculateAnimations(),
+			  customFunctions: {
+			    randomizeColor: function(data) {
+			      var chars = '0123456789abcdef'.split('')
+			      var hex = '#'
+
+			      while (hex.length < 7) {
+			        hex += chars[Math.round(Math.random() * (chars.length - 1))]
+			      }
+
+			      data.node.style.color = hex
+			    }
+			  }
+			})
+		function animate() {
+		  var scrollPosition = (wrapperNode.getBoundingClientRect().top - wrapperNode.offsetTop) * -1
+		  choreographer.runAnimationsAt(scrollPosition)
+		}
+
+		document.body.addEventListener('scroll', animate)
+
+		animate()
+
+		window.addEventListener('resize', function() {
+		  choreographer.updateAnimations(calculateAnimations())
+		})
+
+
+	</script>
+</body>
+</html>
