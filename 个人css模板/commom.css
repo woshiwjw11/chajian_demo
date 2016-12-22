@@ -1,0 +1,62 @@
+/* 王佳伟的个人flex CSS 模板 */
+
+/* HTMLreset部分 */
+html{font-size:1em;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-tap-highlight:rgba(0,0,0,0);-webkit-text-size-adjust:none;}
+body{font-size:0.75em;}
+label{cursor:pointer;}
+a:link, a:visited {text-decoration:none;}
+input,button,select,textarea{outline:none;} 
+textarea{resize:none;}
+
+a, abbr, acronym, address, applet, article, aside, audio, b, blockquote, big, body, center, canvas, caption, cite, code, command, datalist, dd, del, details, dfn, dl, div, dt, em, embed, fieldset, figcaption, figure, font, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, keygen, label, legend, li, meter, nav, menu, object, ol, output, p, pre, progress, q, s, samp, section, small, span, source, strike, strong, sub, sup, table, tbody, tfoot, thead, th, tr, tdvideo, tt,
+u, ul, var {margin:0;padding:0;}
+
+article, aside, footer, header, hgroup, nav, section, figure, figcaption{display:block;} 
+
+h1, h2, h3, h4, h5, h6, th, td, table, input, button, select, textarea, sub{font-size:1em;}
+body, input, button, select, textarea, sub{ font-family:Arial, sans-serif;}
+em, cite, address, optgroup {font-style:normal;}
+kbd, samp, code {font-family:monospace;}
+
+img, input, button, select, textarea {vertical-align:middle;}
+ul, ol {list-style:none;}
+img, fieldset {border:0;}
+abbr, acronym {cursor:help; border-bottom:1px dotted black;}
+table {width:100%;border-spacing:0;border:0}
+table th, table td {border:0;}
+legend, hr {overflow:hidden;position:absolute;top:0;left:0;}
+legend, hr, caption {visibility:hidden;font-size:0;width:0;height:0;line-height:0;}
+/* 容器部分 */
+.flex { display: flex;	/* 将整个变成flex布局 */ }
+.flex_center { justify-content: center; align-items: center;	/* 将flex 容器中的元素垂直居中*/ }
+.flex_left { justify-content: flex-start; align-items: center;	/* 将内容放在模型的左边，垂直方向居中 */ }
+.flex_right { justify-content: flex-end; align-items: center;	/* 将内容放在模型的右边，垂直方向居中 */ }
+.flex_dl { flex-direction: row;	/* 定义模型的子类排序方式由左向右 */ }
+.flex_dr { flex-direction: row-reverse;	/* 定义模型子项从右边开始排列，展示方向也从右边开始。 */ }
+.flex_ct { flex-direction: column;	/* 即纵向从上往下排列 */ }
+.flex_dt { flex-direction: column-reverse;	/* 纵向从下往上排列 */ }
+.flex_wrap { flex-wrap: wrap;	/* 将弹性模型超出的部分换行显示。 */ }
+.flex_nowrap { flex-wrap: nowrap;	/* flex模型为单行形式，超出部分溢出 */ }
+.flex_rewrap { flex-wrap: wrap-reverse;	/* 溢出部分反向显示 */ }
+
+/* flex子项部分  */
+.item_1 { flex: 1;	/* 子项自适应占据所需要的空间 */ }
+.item_25 { flex: 0 0 25%;	/* 占据容器的百分之25 */ }
+.item_33 { flex: 0 0 33%; }
+.item_50 { flex: 0 0 50%;	/* 占据容器的百分之50 */ }
+.item_75 { flex: 0 0 75%;   }
+/* 常用部分 */
+.width_100 { width: 100%;	/* 占据百分之百 */ }
+.width_50 { width: 50%;	/* 占据百分之50% */ }
+/* 字体大小 */
+.font08{font-size: 0.8rem;}
+.font12{font-size:1.2rem;}
+.font13{font-size:1.3rem;}
+.font14{font-size:1.4rem;}
+.font15{font-size:1.5rem;}
+.font16{font-size:1.6rem;}
+.font18{font-size:1.8rem;}
+.font20{font-size:2rem;}
+/* 盒模型部分 */
+.ma { margin: 0 auto;	/* 自动分配左右两边边距 */ }
+.border { border: 1px solid #eee;	/* 常用块状边框 */ }
